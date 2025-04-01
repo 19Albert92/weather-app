@@ -12,7 +12,7 @@ export default {
       }
     },
     fontFamily: {
-      Roboto: ['roboto, sans-serif']
+      roboto: ['Roboto, sans-serif']
     },
     container: {
       center: true,
