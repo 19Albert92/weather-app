@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-full flex-1 text-white">
+  <main class="relative min-h-full flex-1 text-white">
     <WeatherCoverSwitch v-if="currentWeather.condition.code > 0" :code="currentWeather.condition.code" class="absolute bottom-0 object-cover h-full w-full brightness-80"/>
 
     <button class="absolute top-10 start-10 size-10 bg-white/20 flex justify-center items-center rounded-full btn-animation-active-sm" @click="goBack">
@@ -18,7 +18,7 @@
     </div>
 
     <div class="absolute right-0 end-0 bg-gray-500/25 w-1/3 backdrop-blur h-full border-l-2 border-l-gray-200/20 p-5 overflow-y-auto shadow-xl">
-      <div class="flex flex-col gap-10 text-white">
+      <div class="flex flex-col gap-6 text-white *:border-b-2 *:border-gray-400/20 *:pb-5">
         <WeatherDetail
             v-if="forecastWeather.length > 0"
             :current-weather="forecastWeather[chooseDay].day"
@@ -37,7 +37,7 @@
         />
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
@@ -89,8 +89,9 @@ onMounted(() => {
       if (res.status === 200) {
         forecastWeather.value = res.data.forecast.forecastday;
         currentWeather.value = {...res.data.current, ...res.data.location}
+
+        document.title = res.data.location.name;
       }
-      console.log(res)
     })
 
   } else {

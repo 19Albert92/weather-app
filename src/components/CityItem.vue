@@ -1,5 +1,5 @@
 <template>
-  <button @click="goCity" v-if="currentWeather" class="w-full rounded-2xl pt-2 pb-10 bg-base-secondary items-center relative shadow-2xl btn-animation-active-sm overflow-hidden">
+  <button @click="goCity" v-if="!loading && currentWeather" class="w-full rounded-2xl pt-2 pb-10 bg-base-secondary items-center relative shadow-2xl btn-animation-active-sm overflow-hidden">
     <WeatherCoverSwitch :code="currentWeather.condition.code" class="absolute top-0 object-cover h-full w-full brightness-80"/>
     <div class="flex flex-col gap-2 px-4">
       <div class="relative flex items-end gap-2">
@@ -20,6 +20,7 @@
       </button>
     </div>
   </button>
+  <div v-if="loading" class="h-[160px] w-full bg-slate-500 animate-pulse rounded-2xl"></div>
 </template>
 
 <script setup>
@@ -31,6 +32,8 @@ import {useRouter} from 'vue-router'
 import WeatherCoverSwitch from "@/components/WeatherCoverSwitch.vue";
 
 const router = useRouter();
+
+const loading = ref(true);
 
 const goCity = () => {
   router.push({
@@ -65,8 +68,10 @@ onMounted(() => {
     q: props.city?.url
   }).then(res => {
     if (res.status === 200 && res.data) {
-      console.log(res.data)
-      currentWeather.value = {...res.data.current, ...res.data.location}
+      currentWeather.value = {...res.data.current, ...res.data.location};
+      setTimeout(() => {
+        loading.value = false;
+      }, 1000)
     }
   })
 })

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-4">
     <h4>Погода по времени</h4>
     <div>
       <swiper
@@ -23,7 +23,7 @@
 <script setup>
 import {Pagination} from 'swiper/modules';
 import 'swiper/css/pagination';
-import {parseTime, parseWeekDayShort} from "@/helpers/date.js";
+import {parseTime} from "@/helpers/date.js";
 import {Swiper, SwiperSlide} from "swiper/vue";
 
 defineProps({

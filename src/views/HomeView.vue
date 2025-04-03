@@ -1,6 +1,10 @@
 <template>
   <main class="container text-white">
 
+    <button class="absolute top-10 end-10 size-10 bg-white/20 flex justify-center items-center rounded-full btn-animation-active" @click="goSettingsPage">
+      <Cog6ToothIcon class="size-5"/>
+    </button>
+
     <SearchQuery
         @change-query="getSearchResults"
     />
@@ -15,6 +19,16 @@ import { toast } from 'vue3-toastify';
 import SearchQuery from "@/components/SearchQuery.vue";
 import {onMounted, ref} from "vue";
 import CitiesList from "@/components/CitiesList.vue";
+import {Cog6ToothIcon} from "@heroicons/vue/24/solid/index.js";
+import {useRouter} from "vue-router";
+
+const router = useRouter();
+
+const goSettingsPage = () => {
+  router.push({
+    name: 'settingsView'
+  });
+}
 
 const cities = ref([]);
 
@@ -50,8 +64,6 @@ const getSearchResults = (searchQuery) => {
 }
 
 onMounted(() => {
-  if (localStorage.getItem("cities")) {
-    cities.value = JSON.parse(localStorage.getItem("cities"));
-  }
+  if (localStorage.getItem("cities")) cities.value = JSON.parse(localStorage.getItem("cities"));
 })
 </script>
