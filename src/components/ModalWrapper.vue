@@ -19,10 +19,11 @@
 defineProps({
   isShow: {
     type: Boolean,
-    default: false
+    default: false,
+    required: true
   }
-})
-const emits = defineEmits(['onClose'])
+});
+const emits = defineEmits(['onClose']);
 </script>
 
 <style scoped>

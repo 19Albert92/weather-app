@@ -16,7 +16,7 @@
       </div>
     </nav>
   </header>
-  <ModalWrapper :is-show="toggleModal" @on-close="toggleModalAction">
+  <ModalWrapper  @on-close="toggleModalAction" :is-show="toggleModal">
     <div class="text-black">
       <h1 class="text-2xl mb-1">About:</h1>
       <p class="mb-4">

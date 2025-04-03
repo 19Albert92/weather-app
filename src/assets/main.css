@@ -8,4 +8,7 @@
     .btn-animation-active {
         @apply active:scale-95 duration-150 transition-all;
     }
+    .btn-animation-active-sm {
+        @apply active:scale-[.98] duration-150 transition-all;
+    }
 }
