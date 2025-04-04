@@ -1,6 +1,6 @@
 <template>
-  <button @click="goCity" v-if="!loading && currentWeather" class="w-full rounded-2xl pt-2 pb-10 bg-base-secondary items-center relative shadow-2xl btn-animation-active-sm overflow-hidden">
-    <WeatherCoverSwitch :code="currentWeather.condition.code" class="absolute top-0 object-cover h-full w-full brightness-80"/>
+  <button @click="goCity" v-if="!loading && currentWeather" class="w-full rounded-2xl pt-2 pb-10 bg-base-secondary items-center relative shadow-2xl btn-animation-active-sm overflow-hidden group">
+    <WeatherCoverSwitch :code="currentWeather.condition.code" class="absolute top-0 object-cover h-full w-full brightness-80 transition-all duration-500 group-hover:scale-125"/>
     <div class="flex flex-col gap-2 px-4">
       <div class="relative flex items-end gap-2">
         <img :src="currentWeather.condition.icon" alt="weather icon">
@@ -44,17 +44,7 @@ const goCity = () => {
   })
 }
 
-const currentWeather = ref({
-  cloud: 0,
-  condition: {
-    code: 0,
-    icon: '',
-    text: ''
-  },
-  temp_c: 0,
-  last_updated: '',
-  localtime: ''
-});
+const currentWeather = ref({});
 
 const props = defineProps({
   city: {

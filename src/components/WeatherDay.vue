@@ -5,14 +5,14 @@
       <swiper
           :modules="[Pagination]"
           :pagination="{ clickable: true }"
-          :slides-per-view="3.5"
-          :space-between="5"
+          :slides-per-view="3.2"
+          :space-between="10"
       >
         <swiper-slide v-for="(weatherItem, index) in weatherDay" :key="index">
           <div class="py-4 px-2 border-2 border-gray-400 flex flex-col items-center items-center rounded-lg gap-2 backdrop-blur shadow">
             <span class="text-lg font-bold text-shadow-black">{{parseInt(weatherItem.temp_c)}}°C</span>
             <img :src="weatherItem.condition.icon" alt="weather icon" class="size-16">
-            <span class="font-bold text-lg uppercase">{{parseTime(weatherItem?.time)}}</span>
+            <span class="text-md uppercase">{{parseTime(weatherItem?.time)}}</span>
           </div>
         </swiper-slide>
       </swiper>

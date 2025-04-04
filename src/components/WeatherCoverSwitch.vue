@@ -3,9 +3,8 @@
       :src="WEATHER_COVER[code]"
       alt="sunny image"
       :class="$parent"
-       loading="lazy"
+      loading="lazy"
   >
-<!--  <div v-else class="animate-pulse w-full h-full bg-slate-500"/>-->
 </template>
 
 <script>

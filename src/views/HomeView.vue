@@ -1,16 +1,12 @@
 <template>
   <main class="container text-white">
-
     <button class="absolute top-10 end-10 size-10 bg-white/20 flex justify-center items-center rounded-full btn-animation-active" @click="goSettingsPage">
       <Cog6ToothIcon class="size-5"/>
     </button>
 
-    <SearchQuery
-        @change-query="getSearchResults"
-    />
+    <SearchQuery @change-query="getSearchResults"/>
 
     <CitiesList :cities="cities" @delete_city="deleteCity"/>
-
   </main>
 </template>
 
@@ -42,12 +38,11 @@ const deleteCity = (cityId) => {
 }
 
 const getSearchResults = (searchQuery) => {
-
   if (cities.value.length >= 5) return toast.dark('Больше нельзя добавлять городов', {
     autoClose: 1500,
   });
 
-  if (cities.value.findIndex(el => el.id === searchQuery.id) === -1) {
+  if (cities.value.findIndex(el => el?.id === searchQuery.id) === -1) {
 
     cities.value = [...cities.value, {...searchQuery}];
 
